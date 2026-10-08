@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Brands Inspire | Brand launch architects</title><meta name="description" content="Brands Inspire designs brand launches: market research, positioning, packaging and box structure for consumer products and new ventures. New Delhi, serving globally."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Fraunces:ital,opsz,wght@1,9..144,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* Concept: the whole site is a retail aisle. Case studies are packs on a shelf, industries are aisles with their own links, and the page colour changes to whatever you point at. Committed to one look on purpose. */
 :root{
@@ -444,6 +444,33 @@ body.clean .cl-cta{display:flex}
 .bcard .pk2 .pi{width:100%;height:100%;aspect-ratio:4/3;border-radius:4px}
 .bshelf .slot{width:64px}
 .bshelf .slot .pi{aspect-ratio:4/3}
+
+/* rotating hero word */
+.h1 em.rot{white-space:nowrap;transition:background-color .4s,color .4s}
+.h1 em.rot.in{animation:rotIn .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes rotIn{from{opacity:0;transform:translateY(.32em) rotate(-2deg)}to{opacity:1;transform:rotate(-2deg)}}
+/* founder panel */
+.hg2{display:grid;grid-template-columns:minmax(240px,.78fr) 1.22fr;gap:clamp(20px,4vw,72px);align-items:center}
+.por3{position:relative;height:min(62vh,640px);min-height:340px;overflow:hidden}
+.por3 .ghost{position:absolute;left:-1%;top:0;bottom:0;display:flex;align-items:flex-end;writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--serif);font-weight:400;font-size:clamp(60px,10.5vh,120px);line-height:1;white-space:nowrap;color:rgba(14,14,12,.08);pointer-events:none;z-index:0}
+.por3 img{position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:100%;width:auto;max-width:none;z-index:1;user-select:none;-webkit-user-drag:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%)}
+.hq{min-width:0}
+.bq{font-family:var(--serif);font-style:normal;font-weight:400;font-size:clamp(26px,min(3vw,5vh),52px);line-height:1.12;letter-spacing:-.01em;margin:clamp(8px,2vh,16px) 0 0;max-width:24em;text-wrap:balance}
+.bq em{font-style:normal;color:var(--signal)}
+.att{margin:clamp(10px,2vh,18px) 0 0;opacity:.7}
+.ab{margin:clamp(10px,2.4vh,22px) 0 0;max-width:46ch;font-size:clamp(14px,1.15vw,17px);color:rgba(14,14,12,.62)}
+.ab b{color:var(--ink);font-weight:600}
+.pw{margin:0 0 12px;opacity:.8}
+@media (min-width:900px){#heramb{width:min(96vw,1500px);padding-bottom:0}.hg2{flex:1;min-height:0;align-items:stretch}.por3{height:100%;min-height:0}.hq{align-self:center;padding-bottom:clamp(30px,5vh,60px)}}
+@media (max-width:759px){.hg2{grid-template-columns:1fr}.por3{height:min(68vh,560px)}.por3 .ghost{font-size:70px}}
+/* testimonials */
+#voices{width:min(96vw,1300px)}@media (min-width:900px){#voices{width:max(96vw,calc(var(--n,3)*460px + 160px))}}
+.vo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(18px,2.6vw,40px);margin-top:clamp(16px,4vh,40px)}
+.vq{margin:0;border-top:1.5px solid currentColor;padding-top:16px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.vq blockquote{margin:0;font-family:var(--serif);font-style:normal;font-size:clamp(20px,min(1.9vw,3.2vh),32px);line-height:1.2}
+.vq blockquote em{font-style:normal;color:var(--tag)}
+.vq figcaption b{display:block;font-family:var(--display);font-weight:800;font-size:26px;text-transform:uppercase;line-height:.95}
+.vq figcaption span{opacity:.75}
 </style></head><body><div class="cur" id="cur"></div><div class="curl" id="curl"></div>
 <header class="hdr">
   <a class="logo" href="#" id="logo" aria-label="Brands Inspire home">Brands<br>Inspire<small>Launch architects</small></a>
@@ -462,7 +489,7 @@ body.clean .cl-cta{display:flex}
 
 <section class="pn" id="hero" data-bg="#e9e8e1" data-fg="#0e0e0c">
   <div class="eyebrow mono"><span>Brand launch architects</span><span>Research &middot; Strategy &middot; Packaging</span><span>New Delhi, serving globally</span></div>
-  <h1 class="h1 disp" id="h1">Brands that<br>win the <em>aisle.</em></h1>
+  <h1 class="h1 disp" id="h1" aria-label="Brands that win the aisle.">Brands that<br>win the <em class="rot" id="rot" aria-hidden="true">aisle.</em></h1>
   <div class="hero-row">
     <p class="lede">We start with market research and structure, then build the brand, the pack and the box. Made for consumer products first, and for any business about to launch something new.</p>
     <div class="ctas"><button class="btn" id="heroCta" data-cur="Brief">Start a launch brief &rarr;</button><button class="btn line" data-go="aisles" data-cur="Walk">Walk the aisles</button></div>
@@ -537,22 +564,28 @@ body.clean .cl-cta{display:flex}
 </section>
 
 <section class="pn" id="heramb" data-bg="#e9e8e1" data-fg="#0e0e0c">
-  <div class="hg">
-    <div class="por2" data-cur="Heramb" id="portrait"></div>
-    <div>
+  <div class="hg2">
+    <div class="por3" data-cur="Heramb" id="portrait"></div>
+    <div class="hq">
       <div class="mono">Founder &amp; brand launch architect</div>
-      <h2 class="name disp">Heramb Arora</h2>
-      <p class="quote">A pack gets about three seconds on the shelf. I design the research, the system and the structure that make those three seconds count.</p>
+      <p class="bq">&ldquo;A pack gets about three seconds on the shelf. I design the research, the system and the structure <em>that make those three seconds count.</em>&rdquo;</p>
+      <div class="att mono">&mdash; Heramb Arora, Brands Inspire</div>
+      <p class="ab">Brands Inspire is an independent brand launch studio in New Delhi, serving clients worldwide. <b>We turn market research into brands, packs and boxes</b> that are ready for the shelf, the screen and the next market.</p>
       <div class="facts2">
         <div><b>18+ years</b>From garage launches to billion-dollar portfolios, with the pros, cons and politics of each.</div>
         <div><b>CPG and startups</b>Worked inside and alongside both, so the advice fits how each actually runs.</div>
         <div><b>Packaging fluent</b>Board, film, glass, metal, rigid and every print process, specified by hand.</div>
-        <div><b>New Delhi, serving globally</b>Brands in New York, Paris, London, Sydney, Dubai and beyond.</div>
       </div>
-      <p class="mono" style="margin:0 0 12px;opacity:.8">Past work for PepsiCo, Dabur, Haldiram's, Suzuki, Barbie, United Airlines and Sofitel Hotels. Business Economics, SUNY Oneonta.</p>
+      <p class="mono pw">Past work for PepsiCo, Dabur, Haldiram's, Suzuki, Barbie, United Airlines and Sofitel Hotels. Business Economics, SUNY Oneonta.</p>
       <div class="soc"><button class="btn" data-brief data-cur="Brief">Work with Heramb &rarr;</button><a class="btn line" href="#" data-ext="li">LinkedIn</a><a class="btn line" href="#" data-ext="be">Behance</a><a class="btn line" href="#" data-ext="ig">Instagram</a><a class="btn line bk" hidden>Book a call</a></div>
     </div>
   </div>
+</section>
+
+<section class="pn" id="voices" data-bg="#1b463f" data-fg="#f5ead8">
+  <div class="mono">Kind words</div>
+  <h2 class="sec-h disp" style="font-size:clamp(54px,min(8vw,13vh),130px);margin-bottom:0">What clients say.</h2>
+  <div class="vo" id="vo"></div>
 </section>
 
 <section class="pn" id="insta" data-bg="#ff5a1f" data-fg="#0e0e0c">
@@ -653,6 +686,9 @@ var MAT=[
  {n:'Aqueous varnish',g:'Finish',best:'Everyday protection',pro:'Cheap, quick and recyclable.',con:'Less rub resistance than UV.'}
 ];
 var POSTS=[{"s": "hero-sku", "t": "The hero SKU decides everything", "mins": 5, "ex": "Before the range, before the logo, before the colours: one product has to carry the brand.", "b": ["Every brand I have watched scale well started with one product that did the explaining. People remember a single clear thing long before they remember a range.", "Choosing it is a strategy decision, not a design one. The hero SKU has the clearest job, the shortest explanation and enough margin to survive early mistakes. It is rarely the product the founder loves most. It is the one a stranger understands in a sentence.", "Once it is chosen, everything else in the portfolio is arranged around it. The second product is described by how it differs from the first. The third borrows the first one's colour logic. The range starts to read as a family instead of a list.", "Design only becomes easy after that choice. The colour system, the type hierarchy, the flavour coding and the next ten products all have something to follow. Skip the choice and every new product becomes a new argument.", "My test is simple. If you could only ship one product this year, which one would it be? Start there, and design the whole system from it."]}, {"s": "board-caliper", "t": "Board caliper is a brand decision", "mins": 4, "ex": "Why a fraction of a millimetre changes how a product feels in the hand.", "b": ["Most founders see board as a cost line. Customers feel it as quality, before they read a single word on the pack.", "A heavier board makes foil, emboss and deboss possible. It holds a sharp edge and survives a courier. It also changes freight weight, filling-line speed and price per unit, which is why it has to be chosen together with the structure, not after the artwork is signed off.", "The honest answer is rarely the heaviest board. It is the one that suits the product, the channel and the number of hands that will touch it on the way to the customer. A supplement carton on a shelf has a different job from a rigid gift box that gets kept.", "Ask your printer for a physical sample at two weights and hold them side by side. Then ask what each does to the finish you want. That ten-minute conversation saves more money than any design revision."]}, {"s": "three-seconds", "t": "The three seconds myth, and what is real", "mins": 4, "ex": "Shelf time is not the number that matters. Recognition is.", "b": ["You will hear that a pack has three seconds. The useful part of that idea is not the number. It is that most purchases are made on recognition, not on reading.", "That makes a pack a recognition system: one colour, one shape, one ownable asset that looks the same everywhere it appears. A pack that is clever but changes on every product fails that test, however good each one looks alone.", "It also means the front of pack has a very short list of jobs. Say what it is. Make the brand easy to spot. Signal the variant. Everything else belongs on the back, or on the product page.", "Test packs at distance, on a real shelf photograph, next to the three strongest competitors. If you cannot find yours in a second, simplify until you can."]}, {"s": "indian-pantry", "t": "What an Indian pantry brand needs for a New York shelf", "mins": 5, "ex": "Heritage is an asset. Clichés are not.", "b": ["Indian food brands entering the United States and Europe are often told to look more Western, or more traditional. Both are traps.", "The brands that work pick one authentic detail, make it ownable and let everything else be clean. A ladle swirl, a spice colour, a particular jar. One idea, repeated, instead of every symbol of the subcontinent at once.", "The neighbours on that shelf are good pantry brands from everywhere, so the bar for typography, photography and finish is high. Heritage earns attention. Craft earns the second purchase.", "Regulatory copy, ingredient order, nutrition panels and shelf-life labelling should be solved before the artwork is finished, not after. They change the layout more than most people expect, and a market-ready pack is designed around them from the start."]}, {"s": "research-first", "t": "Why we start with research, not a logo", "mins": 4, "ex": "A logo answers a question. Research finds out what the question is.", "b": ["When a founder arrives, the first request is usually a logo or a pack. It is a natural place to start because it is the visible part of a brand.", "But a logo answers a question, and most of the time nobody has asked it properly yet. Who is this for? What do they buy today instead? What would make them switch? Which claim can we actually own?", "Research does not have to be heavy. A shelf audit, a handful of conversations, a look at how competitors price and describe the same product. A week or two of that usually changes the brief, and it nearly always makes the design faster, because there are reasons behind every decision.", "The founders who get the most from a studio are the ones who let it ask the awkward questions first. The logo gets easier after that."]}, {"s": "dieline-first", "t": "Draw the dieline before the design", "mins": 4, "ex": "The pack is an engineered object before it is a graphic.", "b": ["A flat piece of artwork looks very different once it is cut, creased and folded. Panels meet in places the designer never saw on screen, and a beautiful front can lose its best detail to a glue flap.", "That is why we draw the dieline first. It sets the panel sizes, the safe areas, where the folds land and what the printer can actually hold. The artwork is then designed for the real object rather than for a rectangle.", "It also settles practical questions early. Will it fit the filling line? Does it ship flat? How many sit on a pallet? Is there room for the regulatory copy on the side panel that your market requires?", "If you are briefing a designer for a box, ask for the dieline in the first round. If they cannot produce one, that tells you something."]}];
+
+/* Real client quotes only. Fields: q (quote), hl (phrase to highlight inside q), n (name), r (role, company). The section stays hidden while this list is empty. */
+var TESTIMONIALS=[];
 /* ---------- real renders ---------- */
 function U(p){return (window.__IM&&window.__IM[p])||p}
 function gimg(b,i){return U('assets/brands/'+b.s+'/'+(i<9?'0':'')+(i+1)+'.jpg')}
@@ -666,13 +702,13 @@ var CS=null;try{CS=localStorage.getItem('bi-consent')}catch(e){}
 function consentState(v){var g=v?'granted':'denied';return {ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g}}
 var cd=consentState(CS==='yes');cd.wait_for_update=500;gtag('consent','default',cd);
 if(CFG.GTM&&/^GTM-[A-Z0-9]+$/.test(CFG.GTM)){dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtm.js?id='+CFG.GTM;document.head.appendChild(gs)}
-function track(ev,o){try{var d={event:ev};for(var k in (o||{}))d[k]=o[k];dataLayer.push(d)}catch(e){}}
-(function(){var bar=document.getElementById('consent');if(!bar||CS)return;bar.hidden=false;
- bar.addEventListener('click',function(e){var b=e.target.closest('[data-consent]');if(!b)return;var y=b.dataset.consent==='yes';try{localStorage.setItem('bi-consent',y?'yes':'no')}catch(x){}gtag('consent','update',consentState(y));if(y)track('consent_granted');bar.hidden=true})})();
+function bt(ev,o){try{var d={event:ev};for(var k in (o||{}))d[k]=o[k];dataLayer.push(d)}catch(e){}}
+(function(){var bar=document.getElementById('consent');if(!bar||CS||!(CFG.GTM&&/^GTM-[A-Z0-9]+$/.test(CFG.GTM)))return;bar.hidden=false;
+ bar.addEventListener('click',function(e){var b=e.target.closest('[data-consent]');if(!b)return;var y=b.dataset.consent==='yes';try{localStorage.setItem('bi-consent',y?'yes':'no')}catch(x){}gtag('consent','update',consentState(y));if(y)bt('consent_granted');bar.hidden=true})})();
 function bk(){$$('.bk').forEach(function(a){if(CFG.BOOK){a.href=CFG.BOOK;a.target='_blank';a.rel='noopener';a.hidden=false}else a.hidden=true})}
 function submitLead(){var hp=$('#bhp');if(hp&&hp.value)return;
  var d={ts:new Date().toISOString(),aisle:B.aisle,stage:B.stage,markets:B.markets.join(', '),channels:B.channels.join(', '),scope:B.scope.join(', '),size:BUD[B.bud][0],launching:B.what,audience:B.who,when:B.when,name:B.name,email:B.email,phone:B.phone,page:location.href.split('#')[0],referrer:document.referrer||''};
- track('generate_lead',{lead_aisle:B.aisle||'none'});
+ bt('generate_lead',{lead_aisle:B.aisle||'none'});
  if(!CFG.LEADS)return;
  try{fetch(CFG.LEADS,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)}).catch(function(){})}catch(e){}}
 
@@ -738,7 +774,18 @@ function drawMat(){
 drawMat();
 
 /* ---------- portrait ---------- */
-$('#portrait').innerHTML='<img src="'+U('assets/heramb-halftone.png')+'" alt="Halftone illustration of Heramb Arora" width="900" height="1028" decoding="async">';
+$('#portrait').innerHTML='<span class="ghost" aria-hidden="true">About &mdash; Heramb</span><img src="'+U('assets/heramb-bw.webp')+'" alt="Portrait of Heramb Arora, founder of Brands Inspire" width="1000" height="1792" decoding="async">';
+
+/* ---------- testimonials ---------- */
+(function(){var vo=$('#vo'),sec=$('#voices');
+ if(!TESTIMONIALS.length){if(sec)sec.remove();$$('[data-go="voices"]').forEach(function(n){n.remove()});return}
+ sec.style.setProperty('--n',TESTIMONIALS.length);vo.innerHTML=TESTIMONIALS.map(function(t){var q=t.q;if(t.hl&&q.indexOf(t.hl)>-1)q=q.replace(t.hl,'<em>'+t.hl+'</em>');
+  return '<figure class="vq rv"><blockquote>&ldquo;'+q+'&rdquo;</blockquote><figcaption><b>'+t.n+'</b><span class="mono">'+t.r+'</span></figcaption></figure>'}).join('')})();
+
+/* ---------- hero rotating word ---------- */
+(function(){var el=$('#rot');if(!el||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+ var W=[['aisle','#ffd400','#0e0e0c'],['shelf','#ff5a1f','#0e0e0c'],['cart','#1b463f','#f5ead8'],['feed','#f6a6c8','#0e0e0c'],['market','#7cc4ff','#0e0e0c'],['moment','#c8f03c','#0e0e0c']],i=0;
+ setInterval(function(){if(document.hidden)return;i=(i+1)%W.length;var w=W[i];el.classList.remove('in');void el.offsetWidth;el.textContent=w[0]+'.';el.style.background=w[1];el.style.color=w[2];el.classList.add('in');if(typeof measure==='function')measure()},2400)})();
 
 /* ---------- pinboard ---------- */
 (function(){var pos=[[2,10,-5],[14,44,4],[26,6,-3],[38,40,6],[50,8,-6],[62,42,3],[74,6,5],[84,40,-4],[44,64,2]],pb=$('#pb');
@@ -881,7 +928,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Enter'&&$('#brief').
 /* ---------- delegated clicks ---------- */
 document.addEventListener('click',function(e){var t=e.target;function c(s){return t.closest(s)}
  var el;
- if(c('.bk')){track('book_call');return}
+ if(c('.bk')){bt('book_call');return}
  if(c('[data-close]')){closeAll();return}
  if(c('[data-home]')){e.preventDefault();goHome();return}
  if((el=c('[data-copylink]'))){e.stopPropagation();var bse=el.dataset.copylink;copy(link(el.dataset.full?bse:'share-'+bse),el.dataset.full?'Full link copied.':'Clean link copied. It carries no contact details.');return}
