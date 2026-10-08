@@ -493,7 +493,6 @@ body.clean .cl-cta{display:flex}
     <div class="chips" id="chips" role="group" aria-label="Filter by aisle"></div>
   </div>
   <div class="cards" id="cards"></div>
-  <p class="mono" style="margin:16px 0 0;opacity:.7">Concept brands created by Brands Inspire to show the process. Not client work.</p>
 </section>
 
 <section class="pn" id="method" data-bg="#1b463f" data-fg="#f5ead8">
@@ -580,7 +579,7 @@ body.clean .cl-cta{display:flex}
 <section class="pn" id="contact" data-bg="#ffd400" data-fg="#0e0e0c">
   <h2 class="big disp">Launching<br>something?<br><button class="btn" data-brief data-cur="Brief">Tell us &rarr;</button></h2>
   <div class="ct" id="ctx"></div>
-  <p class="fine"><a href="#" data-ext="li">LinkedIn</a><a href="#" data-ext="be">Behance</a><a href="#" data-ext="ig">Instagram</a><br>We reply within 24 hours. Mon to Fri, 9am to 6pm EST. Every enquiry is treated as confidential.<br>The brands shown on this site are Brands Inspire concept brands, created to show process. &copy; 2026 Brands Inspire.</p>
+  <p class="fine"><a href="#" data-ext="li">LinkedIn</a><a href="#" data-ext="be">Behance</a><a href="#" data-ext="ig">Instagram</a><br>We reply within 24 hours. Mon to Fri, 9am to 6pm EST. Every enquiry is treated as confidential.<br>&copy; 2026 Brands Inspire.</p>
 </section>
 
 </div></div>
@@ -825,7 +824,7 @@ function caseOv(s){var b=BR.filter(function(x){return x.s===s})[0];if(!b)return;
  var gi=b.caps.map(function(c,i){return i}).filter(function(i){return i!==b.c-1}),gal=gi.map(function(i,k){var c=b.caps[i];return '<figure class="'+(k===0?'wide':'')+'"><img src="'+gimg(b,i)+'" alt="'+b.n+' concept brand, '+c.toLowerCase()+'" loading="lazy" decoding="async"><figcaption class="mono">'+c+'</figcaption></figure>'}).join('');
  $('#caseIn').innerHTML='<div class="mono">Concept brand &middot; '+b.cat+' &middot; '+b.yr+'</div><h1 class="disp">'+b.n+'</h1><div class="cs"><div class="stage"><img src="'+gimg(b,b.c-1)+'" alt="'+b.n+' concept brand, '+b.caps[b.c-1].toLowerCase()+'" decoding="async"></div><div><p class="lead" style="margin-top:0"><b>'+b.line+'</b></p>'+b.story.map(function(p){return '<p class="cp">'+p+'</p>'}).join('')+'<dl><dt>Home</dt><dd>'+b.home+'</dd><dt>Founder</dt><dd>'+b.who+'</dd><dt>Big idea</dt><dd>'+b.idea+'</dd><dt>Personality</dt><dd>'+b.pers+'</dd><dt>Voice</dt><dd>'+b.voice+'</dd><dt>Type</dt><dd>'+b.ty.map(function(t){return t[1]}).join(' / ')+'</dd><dt>Aisle</dt><dd>'+b.t.map(function(t){return aOf(t).n}).join(', ')+'</dd></dl><div class="sh"><button class="btn line" data-back="aisle-'+b.t[0]+'">&larr; Back to '+main.n+'</button><button class="btn noclean" data-brief="'+main.n+'">Brief a launch like this &rarr;</button><button class="btn line noclean" data-copylink="case-'+s+'">Copy clean link</button></div></div></div>'+
  '<div class="cdet"><div><span class="mono">Colour</span><ul class="pal">'+pal+'</ul></div><div><span class="mono">Range</span><ul class="rg">'+b.rng.map(function(r){return '<li>'+r+'</li>'}).join('')+'</ul><span class="mono" style="display:block;margin-top:18px">Packaging</span><p style="margin:6px 0 0">'+b.pk+'</p></div></div>'+
- '<div class="gal">'+gal+'</div><p class="mono" style="margin-top:40px;opacity:.7">A Brands Inspire concept brand, created to show process. Not client work.</p>';
+ '<div class="gal">'+gal+'</div>';
  show($('#caseOv'),b.bg,b.fg)}
 function journalOv(){
  $('#journalIn').innerHTML='<div class="mono">Journal &middot; Heramb\'s notes</div><h1 class="disp">Thinking out loud.</h1><p class="lead">Brand stories, packaging lessons and honest opinions. Personal notes, not a company blog.</p><div class="jgrid">'+POSTS.map(function(p){return '<div class="row" data-post="'+p.s+'" data-cur="Read"><div><h3>'+p.t+'</h3><p style="margin:6px 0 0;max-width:60ch">'+p.ex+'</p></div><span class="mono">'+p.mins+' min read</span></div>'}).join('')+'</div>';
