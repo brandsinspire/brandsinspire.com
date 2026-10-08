@@ -451,9 +451,9 @@ body.clean .cl-cta{display:flex}
 @keyframes rotIn{from{opacity:0;transform:translateY(.32em) rotate(-2deg)}to{opacity:1;transform:rotate(-2deg)}}
 /* founder panel */
 .hg2{display:grid;grid-template-columns:minmax(240px,.78fr) 1.22fr;gap:clamp(20px,4vw,72px);align-items:center}
-.por3{position:relative;height:min(62vh,640px);min-height:340px;overflow:hidden}
+.por3{position:relative;height:min(62vh,640px);min-height:340px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%)}
 .por3 .ghost{position:absolute;left:-1%;top:0;bottom:0;display:flex;align-items:flex-end;writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--serif);font-weight:400;font-size:clamp(60px,10.5vh,120px);line-height:1;white-space:nowrap;color:rgba(14,14,12,.08);pointer-events:none;z-index:0}
-.por3 img{position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:100%;width:auto;max-width:none;z-index:1;user-select:none;-webkit-user-drag:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%)}
+.por3 img{position:absolute;bottom:0;left:-14%;width:128%;height:auto;max-width:none;z-index:1;user-select:none;-webkit-user-drag:none;}
 .hq{min-width:0}
 .bq{font-family:var(--serif);font-style:normal;font-weight:400;font-size:clamp(26px,min(3vw,5vh),52px);line-height:1.12;letter-spacing:-.01em;margin:clamp(8px,2vh,16px) 0 0;max-width:24em;text-wrap:balance}
 .bq em{font-style:normal;color:var(--signal)}
@@ -774,7 +774,7 @@ function drawMat(){
 drawMat();
 
 /* ---------- portrait ---------- */
-$('#portrait').innerHTML='<span class="ghost" aria-hidden="true">About &mdash; Heramb</span><img src="'+U('assets/heramb-bw.webp')+'" alt="Portrait of Heramb Arora, founder of Brands Inspire" width="1000" height="1792" decoding="async">';
+$('#portrait').innerHTML='<span class="ghost" aria-hidden="true">About &mdash; Heramb</span><img src="'+U('assets/heramb-bw.webp')+'" alt="Portrait of Heramb Arora, founder of Brands Inspire" width="1000" height="1130" decoding="async">';
 
 /* ---------- testimonials ---------- */
 (function(){var vo=$('#vo'),sec=$('#voices');
