@@ -472,6 +472,16 @@ body.clean .cl-cta{display:flex}
 .vq blockquote em{font-style:normal;color:var(--tag)}
 .vq figcaption b{display:block;font-family:var(--display);font-weight:800;font-size:26px;text-transform:uppercase;line-height:.95}
 .vq figcaption span{opacity:.75}
+
+.chip sup{font-size:.7em;opacity:.65;margin-left:2px}
+.card.more .tile{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(18px,2vw,28px);background:transparent;box-shadow:inset 0 0 0 1.5px currentColor}
+.card.more .tile .disp{font-size:clamp(34px,3.4vw,56px);line-height:.92;text-transform:uppercase;font-weight:800;text-align:left}
+.card.more .tile i{font-style:normal;font-size:44px;line-height:1;align-self:flex-end;transition:transform .4s}
+.card.more:hover .tile i{transform:translateX(8px)}
+@media (max-width:899px){.cards{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -16px;padding:0 16px 8px;scroll-padding-left:16px;-webkit-overflow-scrolling:touch}.card{width:72vw;max-width:320px;scroll-snap-align:start}}
+
+#work .work-h{flex-direction:column;align-items:flex-start;gap:14px}
+@media (min-width:900px){#work .work-h{width:calc(100vw - 2*clamp(28px,4vw,72px))}}
 </style></head><body><div class="cur" id="cur"></div><div class="curl" id="curl"></div>
 <header class="hdr">
   <a class="logo" href="#" id="logo" aria-label="Brands Inspire home">Brands<br>Inspire<small>Launch architects</small></a>
@@ -724,8 +734,10 @@ $('#shelf').innerHTML=SHELF.map(function(s){return BR.filter(function(b){return 
 $('#mq').innerHTML=(function(){var t=AIS.map(function(a){return a.n}).concat(['Research','Strategy','Packaging','Box structure','Launch']).map(function(x){return x+'<span>&#10042;</span>'}).join('');return t+t})();
 $('#rows').innerHTML=AIS.map(function(a){var bs=brOf(a.s);
  return '<div class="row" data-aisle="'+a.s+'" data-th="'+a.bg+'|'+a.fg+'" data-cur="Open"><h3>'+a.n+'</h3><div class="packs">'+bs.slice(0,8).map(function(b){return pack(b,'r'+a.s)}).join('')+'</div><div style="display:flex;gap:8px;align-items:center"><span class="mono">'+bs.length+' brands</span><button class="mini" data-copylink="aisle-'+a.s+'"><span>Copy clean link</span></button></div></div>'}).join('');
-$('#chips').innerHTML='<button class="chip on" data-f="all">All</button>'+AIS.map(function(a){return '<button class="chip" data-f="'+a.s+'">'+a.n+'</button>'}).join('');
-function drawCards(f){$('#cards').innerHTML=BR.filter(function(b){return f==='all'||b.t.indexOf(f)>-1}).map(card).join('');measure()}
+$('#chips').innerHTML='<button class="chip on" data-f="all">Featured</button>'+AIS.map(function(a){return '<button class="chip" data-f="'+a.s+'">'+a.n+' <sup>'+brOf(a.s).length+'</sup></button>'}).join('');
+function moreCard(h,sub,attr){return '<button class="card more" '+attr+' data-cur="Open"><div class="tile"><span class="disp">'+h+'</span><i>&rarr;</i></div><p>'+sub+'</p></button>'}
+function drawCards(f){var list,end;if(f==='all'){list=SHELF.slice(0,12).map(function(s){return BR.filter(function(b){return b.s===s})[0]}).filter(Boolean);end=moreCard('All '+BR.length+' case studies','Walk every aisle, from supplements to spirits.','data-go="aisles"')}else{var all=brOf(f),a=aOf(f);list=all.slice(0,9);end=all.length>9?moreCard('See all '+all.length,'Every '+a.n.toLowerCase()+' case study.','data-aisle="'+f+'"'):''}
+ $('#cards').innerHTML=list.map(card).join('')+end;$('#cards').scrollLeft=0;measure()}
 drawCards('all');
 $('#ph').innerHTML=PH.map(function(p){return '<div class="rv"><i></i><span class="mono">'+p[1]+'</span><h4>'+p[0]+'</h4><p>'+p[2]+'</p></div>'}).join('');
 $('#fq').innerHTML=FAQ.map(function(f){return '<div class="q"><button aria-expanded="false"><span>'+f[0]+'</span><i></i></button><div class="a"><div><p>'+f[1]+'</p></div></div></div>'}).join('');
