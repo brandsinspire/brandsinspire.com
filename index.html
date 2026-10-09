@@ -482,6 +482,17 @@ body.clean .cl-cta{display:flex}
 
 #work .work-h{flex-direction:column;align-items:flex-start;gap:14px}
 @media (min-width:900px){#work .work-h{width:calc(100vw - 2*clamp(28px,4vw,72px))}}
+
+#clients .lw{width:100%}
+@media (min-width:900px){#clients .lw{width:calc(100vw - 2*clamp(28px,4vw,72px))}}
+#clients .sec-h{font-size:clamp(34px,min(4.4vw,7vh),76px)}
+.lg{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(18px,3.5vh,40px);border-top:1px solid rgba(233,232,225,.18);border-left:1px solid rgba(233,232,225,.18)}
+@media (min-width:600px){.lg{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:900px){.lg{grid-template-columns:repeat(7,1fr)}}
+.lg>*{display:flex;align-items:center;justify-content:center;height:clamp(78px,15.5vh,150px);padding:clamp(14px,2.4vh,26px) clamp(14px,1.8vw,30px);border-right:1px solid rgba(233,232,225,.18);border-bottom:1px solid rgba(233,232,225,.18);opacity:.94;transition:opacity .25s,background .25s}
+.lg a:hover,.lg a:focus-visible{opacity:1;background:rgba(233,232,225,.07)}
+.lg img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.lg>.f{display:none}@media (min-width:600px){.lg>.f{display:flex}}
 </style></head><body><div class="cur" id="cur"></div><div class="curl" id="curl"></div>
 <header class="hdr">
   <a class="logo" href="#" id="logo" aria-label="Brands Inspire home">Brands<br>Inspire<small>Launch architects</small></a>
@@ -531,6 +542,14 @@ body.clean .cl-cta{display:flex}
     <div class="chips" id="chips" role="group" aria-label="Filter by aisle"></div>
   </div>
   <div class="cards" id="cards"></div>
+</section>
+
+<section class="pn" id="clients" data-bg="#0e0e0c" data-fg="#e9e8e1">
+  <div class="lw">
+    <h2 class="sec-h disp" style="margin:0">Brands we have built, and worked with.</h2>
+    <p class="sub" style="margin:12px 0 0">Shown in one colour so they sit together. Each logo opens the brand's own site.</p>
+    <div class="lg" id="lg"></div>
+  </div>
 </section>
 
 <section class="pn" id="method" data-bg="#1b463f" data-fg="#f5ead8">
@@ -634,7 +653,7 @@ body.clean .cl-cta{display:flex}
 <div class="ov" id="postOv"><button class="x" data-close aria-label="Close">&times;</button><div class="ov-in" id="postIn"></div></div>
 <div class="ov" id="brief" style="background:#ffd400;color:#0e0e0c;--ovfg:#0e0e0c;--ovbg:#ffd400"><button class="x" data-close aria-label="Close">&times;</button><div class="ov-in" id="briefIn"></div></div>
 <div class="ov" id="menu" style="background:#0e0e0c;color:#e9e8e1;--ovfg:#e9e8e1;--ovbg:#0e0e0c"><button class="x" data-close aria-label="Close">&times;</button>
-  <a href="#" data-go="aisles">Aisles</a><a href="#" data-go="work">Work</a><a href="#" data-go="boxes">Box structure</a><a href="#" data-go="heramb">Heramb</a><a href="#" data-go="insta">Instagram</a><a href="#" data-journal>Journal</a><a href="#" data-brief style="color:#ffd400">Start a brief</a></div>
+  <a href="#" data-go="aisles">Aisles</a><a href="#" data-go="work">Work</a><a href="#" data-go="clients">Clients</a><a href="#" data-go="boxes">Box structure</a><a href="#" data-go="heramb">Heramb</a><a href="#" data-go="insta">Instagram</a><a href="#" data-journal>Journal</a><a href="#" data-brief style="color:#ffd400">Start a brief</a></div>
 <div id="toast" role="status"></div>
 <div class="consent" id="consent" hidden role="dialog" aria-label="Cookie preferences"><p>We use cookies to measure visits and run ads. Nothing is set until you say yes.</p><div><button class="btn line sm" data-consent="no">Decline</button><button class="btn sm" data-consent="yes">Accept</button></div></div>
 <script>(function(){
@@ -729,6 +748,8 @@ function submitLead(){var hp=$('#bhp');if(hp&&hp.value)return;
 /* ---------- build ---------- */
 function brOf(s){return BR.filter(function(b){return b.t.indexOf(s)>-1})}
 function aOf(s){return AIS.filter(function(a){return a.s===s})[0]}
+(function(){var L=[['ge','General Electric','https://www.ge.com'],['olio','Olio','https://olioolives.com'],['dabur','Dabur','https://www.dabur.com'],['kohl','Kohl','https://kohlchocolate.store'],['frito-lay','Frito-Lay','https://www.fritolay.com'],['mai-chai','Mai Chai','https://shopmaichai.online'],['barbie','Barbie','https://barbie.mattel.com'],['nacl','NACL','https://getnacl.com'],['cargill','Cargill','https://www.cargill.com'],['bombay-pantry','The Bombay Pantry','https://bombaypantry.shop'],['national-geographic','National Geographic','https://www.nationalgeographic.com'],['soom','Soom','https://soom.skin'],['kurkure','Kurkure','https://www.pepsicoindia.co.in'],['fiery-fusion','Fiery Fusion','https://fieryfusion.store'],['dilmah','Dilmah','https://www.dilmahtea.com'],['morrow','Morrow','https://letsmorrow.com'],['woodland','Woodland','https://www.woodlandworldwide.com'],['second-pour','Second Pour','https://secondpour.cafe'],['dormeuil','Dormeuil','https://dormeuil.com'],['gigi','Gigi','https://gigifizz.com'],['ocm','OCM','https://www.ocm.in'],['kip','Kip','https://kipforpets.com'],['globo','Globo',''],['nice-mess','Nice Mess','https://nice-mess.com'],['abhya','Abhya','#case-abhya'],['malai-co','Malai Co.','#case-malai-co']];
+$('#lg').innerHTML=L.map(function(x){var img='<img src="assets/logos/'+x[0]+'.svg" alt="'+x[1]+'" loading="lazy" decoding="async">';if(!x[2])return '<div title="'+x[1]+'">'+img+'</div>';if(x[2].charAt(0)==='#')return '<a href="'+x[2]+'" data-case="'+x[0]+'" aria-label="'+x[1]+', case study">'+img+'</a>';return '<a href="'+x[2]+'" target="_blank" rel="noopener" aria-label="'+x[1]+' website">'+img+'</a>'}).join('')+'<div class="f" aria-hidden="true"></div><div class="f" aria-hidden="true"></div>'})();
 var SHELF=['tessera-gin','morrow','habit','kimsol','nacl','lutine-and-son','catalyst','dijle','soom','paragon','kohl','veridia','abhya','thrive','gigi','kip'];
 $('#shelf').innerHTML=SHELF.map(function(s){return BR.filter(function(b){return b.s===s})[0]}).filter(Boolean).map(function(b){return '<button class="pk" data-case="'+b.s+'" data-th="'+b.bg+'|'+b.fg+'" data-cur="'+b.n+'" aria-label="Open '+b.n+'">'+pack(b,'h')+'</button>'}).join('');
 $('#mq').innerHTML=(function(){var t=AIS.map(function(a){return a.n}).concat(['Research','Strategy','Packaging','Box structure','Launch']).map(function(x){return x+'<span>&#10042;</span>'}).join('');return t+t})();
@@ -797,7 +818,7 @@ $('#portrait').innerHTML='<span class="ghost" aria-hidden="true">About &mdash; H
 (function(){var vo=$('#vo'),sec=$('#voices');
  if(!TESTIMONIALS.length){if(sec)sec.remove();$$('[data-go="voices"]').forEach(function(n){n.remove()});return}
  sec.style.setProperty('--n',TESTIMONIALS.length);vo.innerHTML=TESTIMONIALS.map(function(t){var q=t.q;if(t.hl&&q.indexOf(t.hl)>-1)q=q.replace(t.hl,'<em>'+t.hl+'</em>');
-  return '<figure class="vq rv"><blockquote>&ldquo;'+q+'&rdquo;</blockquote><figcaption><b>'+t.n+'</b><span class="mono">'+t.r+'</span></figcaption></figure>'}).join('')})();
+  return '<figure class="vq rv"><blockquote>&ldquo;'+q+'&rdquo;</blockquote><figcaption><b>'+t.n+'</b><span class="mono">'+t.r+'</span></figcaption></figure>'}).join('')+'<div class="f" aria-hidden="true"></div><div class="f" aria-hidden="true"></div>'})();
 
 /* ---------- hero rotating word ---------- */
 (function(){var el=$('#rot');if(!el||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
