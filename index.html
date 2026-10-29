@@ -316,8 +316,6 @@ body.clean .noclean{display:none!important}
 .soc{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 
 /* instagram pinboard */
-#insta{width:min(96vw,1300px)}
-@media (min-width:900px){#insta{width:110vw}}
 .pb{position:relative;height:clamp(300px,56vh,520px);margin-top:clamp(6px,2vh,18px)}
 .pin{position:absolute;width:clamp(120px,13vw,190px);aspect-ratio:1;background:#fff;color:#111;padding:7px 7px 24px;box-shadow:0 10px 24px rgba(0,0,0,.28);text-decoration:none;transition:box-shadow .3s,transform .4s cubic-bezier(.2,.9,.2,1.2);touch-action:none;user-select:none;cursor:grab}
 .pin:hover{box-shadow:0 18px 34px rgba(0,0,0,.35);z-index:5}
@@ -496,9 +494,57 @@ body.clean #insta{display:none!important}
 .lg img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 .lg>.f{display:none}@media (min-width:600px){.lg>.f{display:flex}}
 
-/* Instagram reels on the pinboard */
-.pin.reel .im:after{content:'';position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(14,14,12,.62) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M9 6.5v11l9-5.5z'/%3E%3C/svg%3E") center/60% no-repeat;pointer-events:none}
-.pin.reel .im .pi{object-fit:cover}
+
+/* ===== reels wall ===== */
+#insta{--ch:clamp(340px,62vh,640px);width:min(96vw,1300px);position:relative;overflow:hidden}
+@media (min-width:900px){#insta{width:calc(44vw + 6*(var(--ch)*.5625 + 26px) + 6vw)}}
+.rl{position:relative;display:flex;align-items:center;gap:clamp(24px,4vw,70px);height:100%}
+.rl-bg{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);pointer-events:none;overflow:hidden;white-space:nowrap;opacity:.9}
+.rl-bg span{display:inline-block;font-family:var(--disp,inherit);font-weight:900;font-size:clamp(160px,34vh,380px);line-height:1;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.5px rgba(244,241,234,.13);animation:rlm 60s linear infinite}
+@keyframes rlm{to{transform:translateX(-50%)}}
+.rl-h{position:relative;z-index:2;flex:none;width:min(40vw,520px)}
+.rl-h h2{font-size:clamp(54px,min(8.6vw,15vh),150px);line-height:.88;margin:.12em 0 .22em;letter-spacing:-.03em}
+.rl-h h2 em{font-style:normal;color:var(--signal)}
+.rl-h .sub{max-width:34ch;opacity:.8}
+.rl-row{position:relative;z-index:2;display:flex;gap:26px;align-items:center;perspective:1400px}
+.rc{position:relative;flex:none;display:block;height:var(--ch);aspect-ratio:9/16;color:#fff;text-decoration:none;transform:translateY(var(--dy)) rotate(var(--r)) perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .55s cubic-bezier(.2,.9,.25,1.15),filter .45s,opacity .45s;will-change:transform;cursor:pointer}
+.rc-in{position:absolute;inset:0;border-radius:22px;overflow:hidden;background:#1b1b18;box-shadow:0 22px 50px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);transition:box-shadow .5s}
+.rc-im,.rc-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.rc-v{opacity:0}.rc-v.on{opacity:1}
+.rc-in:before{content:'';position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,rgba(0,0,0,.35) 0,transparent 28%,transparent 48%,rgba(0,0,0,.82) 100%);pointer-events:none}
+.rc-gl{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(circle at var(--gx,50%) var(--gy,30%),rgba(255,255,255,.38),transparent 46%);mix-blend-mode:soft-light}
+.rc-n{position:absolute;z-index:5;left:16px;top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;opacity:.85}
+.rc-play{position:absolute;z-index:5;left:50%;top:44%;width:74px;height:74px;margin:-37px 0 0 -37px;border-radius:50%;background:rgba(14,14,12,.5) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M9 6.5v11l9-5.5z'/%3E%3C/svg%3E") center/42% no-repeat;border:1.5px solid rgba(255,255,255,.7);backdrop-filter:blur(4px);transition:transform .5s cubic-bezier(.2,.9,.2,1.3),opacity .3s;animation:rcp 2.4s ease-out infinite}
+@keyframes rcp{0%{box-shadow:0 0 0 0 rgba(255,255,255,.5)}100%{box-shadow:0 0 0 22px rgba(255,255,255,0)}}
+.rc-cap{position:absolute;z-index:5;left:18px;right:18px;bottom:18px;display:flex;flex-direction:column;gap:10px}
+.rc-cap span{font-weight:700;font-size:clamp(15px,1.25vw,20px);line-height:1.15;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rc-cap i{font-style:normal;align-self:flex-start;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 13px;border-radius:99px;background:rgb(var(--g));color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4);transform:translateY(12px);opacity:0;transition:transform .45s cubic-bezier(.2,.9,.2,1),opacity .35s}
+.rc:hover,.rc:focus-visible{z-index:6;transform:translateY(-14px) rotate(0deg) perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.07)}
+.rc:hover .rc-in,.rc:focus-visible .rc-in{box-shadow:0 40px 90px rgba(0,0,0,.65),0 0 70px 6px rgba(var(--g),.55),0 0 0 2px rgba(var(--g),.9)}
+.rc:hover .rc-im{transform:scale(1.12)}
+.rc:hover .rc-gl{opacity:1}
+.rc:hover .rc-play{transform:scale(.55);opacity:0;animation:none}
+.rc:hover .rc-cap i{transform:none;opacity:1}
+.rl-row:hover .rc:not(:hover){filter:saturate(.25) brightness(.55);transform:translateY(var(--dy)) rotate(var(--r)) scale(.95)}
+/* entrance: curtain wipe up + settle */
+.rl:not(.in) .rc{opacity:0}
+.rl.in .rc{animation:rcIn 1.05s cubic-bezier(.2,.85,.2,1) backwards;animation-delay:calc(var(--i)*.1s + .15s)}
+@keyframes rcIn{from{opacity:0;clip-path:inset(100% 0 0 0 round 22px);transform:translateY(14vh) rotate(calc(var(--r)*4)) scale(.9)}60%{opacity:1}}
+.rl .rl-h>*{transition:transform .9s cubic-bezier(.2,.85,.2,1),opacity .9s}
+.rl:not(.in) .rl-h>*{opacity:0;transform:translateY(40px)}
+.rl.in .rl-h>*:nth-child(2){transition-delay:.08s}.rl.in .rl-h>*:nth-child(3){transition-delay:.16s}.rl.in .rl-h>*:nth-child(4){transition-delay:.24s}
+@media (max-width:899px){
+ #insta{height:auto;min-height:0;width:100%;padding-bottom:40px}
+ .rl{flex-direction:column;align-items:stretch;height:auto;gap:22px}
+ .rl-h{width:auto}
+ .rl-row{overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:0 -16px;padding:18px 16px 28px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+ .rl-row::-webkit-scrollbar{display:none}
+ .rc{--ch:min(74vw,420px);height:auto;width:min(62vw,300px);scroll-snap-align:center;transform:rotate(var(--r))}
+ .rc-cap i{opacity:1;transform:none}
+ .rc-play{animation:none}
+}
+@media (prefers-reduced-motion:reduce){.rl-bg span,.rc-play{animation:none}.rl.in .rc{animation:none}}
+body.clean #insta{display:none!important}
 </style></head><body><div class="cur" id="cur"></div><div class="curl" id="curl"></div>
 <header class="hdr">
   <a class="logo" href="#" id="logo" aria-label="Brands Inspire home">Brands<br>Inspire<small>Launch architects</small></a>
@@ -624,12 +670,17 @@ body.clean #insta{display:none!important}
   <div class="vo" id="vo"></div>
 </section>
 
-<section class="pn" id="insta" data-bg="#ff5a1f" data-fg="#0e0e0c">
-  <div class="mono">Instagram &middot; @heramb.arora</div>
-  <h2 class="sec-h disp" style="font-size:clamp(54px,min(8vw,13vh),130px);margin-bottom:0">The pinboard.</h2>
-  <p class="sub" style="margin-bottom:0">Pinned like a studio wall. Drag them around. Tap one to open it.</p>
-  <div class="pb" id="pb"><div class="stamp">From the studio</div></div>
-  <div class="ctas" style="margin-top:6px"><a class="btn" href="#" data-ext="ig">Follow on Instagram &rarr;</a></div>
+<section class="pn" id="insta" data-bg="#0e0e0c" data-fg="#f4f1ea">
+  <div class="rl" id="rl">
+    <div class="rl-bg" aria-hidden="true"><span>REELS &middot; REELS &middot; REELS &middot; REELS &middot; REELS &middot; REELS &middot; </span></div>
+    <div class="rl-h">
+      <div class="mono">Instagram &middot; @heramb.arora</div>
+      <h2 class="disp">Watch<br>the work<br><em>move.</em></h2>
+      <p class="sub">Straight from the studio feed. Hover a reel to play it. Tap to watch on Instagram.</p>
+      <div class="ctas"><a class="btn" href="#" data-ext="ig" data-cur="Follow">Follow on Instagram &rarr;</a></div>
+    </div>
+    <div class="rl-row" id="pb"></div>
+  </div>
 </section>
 
 <section class="pn" id="journalP" data-bg="#e9e8e1" data-fg="#0e0e0c">
@@ -832,20 +883,27 @@ $('#portrait').innerHTML='<span class="ghost" aria-hidden="true">About &mdash; H
  var W=[['aisle','#ffd400','#0e0e0c'],['shelf','#ff5a1f','#0e0e0c'],['cart','#1b463f','#f5ead8'],['feed','#f6a6c8','#0e0e0c'],['market','#7cc4ff','#0e0e0c'],['moment','#c8f03c','#0e0e0c']],i=0;
  setInterval(function(){if(document.hidden)return;i=(i+1)%W.length;var w=W[i];el.classList.remove('in');void el.offsetWidth;el.textContent=w[0]+'.';el.style.background=w[1];el.style.color=w[2];el.classList.add('in');if(typeof measure==='function')measure()},2400)})();
 
-/* ---------- pinboard ---------- */
-(function(){var pos=[[2,10,-5],[14,44,4],[26,6,-3],[38,40,6],[50,8,-6],[62,42,3],[74,6,5],[84,40,-4],[44,64,2]],pb=$('#pb');
- var ix=[[0,5],[4,3],[6,4],[3,6],[7,2],[1,3],[9,2],[2,4],[8,2]];
- function draw(items){pb.querySelectorAll('.pin').forEach(function(n){n.remove()});
-  pb.insertAdjacentHTML('beforeend',items.slice(0,9).map(function(it,i){var p=pos[i];return '<a class="pin'+(it.reel?' reel':'')+'" href="'+it.href+'"'+(it.ext?' target="_blank" rel="noopener"':'')+(it.cs?' data-case="'+it.cs+'"':'')+' style="left:'+p[0]+'%;top:'+p[1]+'%;transform:rotate('+p[2]+'deg)" data-cur="Open"><div class="im"><img class="pi" src="'+it.img+'" alt="'+it.alt+'" loading="lazy" decoding="async" draggable="false"></div><span>'+it.cap+'</span></a>'}).join(''))}
+/* ---------- reels wall ---------- */
+(function(){var pb=$('#pb'),rl=$('#rl');if(!pb)return;
+ var ix=[[0,5],[4,3],[6,4],[3,6],[7,2],[1,3]];
+ var rot=[-3,2,-1.5,3,-2.5,1.5],drop=[3,-2,4,-3,2,-4];
+ function draw(items){pb.innerHTML=items.slice(0,6).map(function(it,i){
+  return '<a class="rc" href="'+it.href+'"'+(it.ext?' target="_blank" rel="noopener"':'')+(it.cs?' data-case="'+it.cs+'"':'')+' style="--i:'+i+';--r:'+rot[i]+'deg;--dy:'+drop[i]+'vh;--g:'+(it.g||'255,90,31')+'" data-cur="'+(it.ext?'Watch':'Open')+'"'+(it.vid?' data-vid="'+it.vid+'"':'')+'><div class="rc-in"><img class="rc-im" src="'+it.img+'" alt="'+it.alt+'" loading="lazy" decoding="async" draggable="false"><div class="rc-gl"></div><div class="rc-n">0'+(i+1)+'</div><div class="rc-play"></div><div class="rc-cap"><span>'+it.cap+'</span><i>'+(it.ext?'Watch reel':'View')+' &#8599;</i></div></div></a>'}).join('')}
  draw(ix.map(function(x){var b=BR[x[0]];return {href:'#',cs:b.s,img:gimg(b,x[1]),alt:b.n+', '+b.cat,cap:b.n+' &middot; '+b.caps[x[1]]}}));
- if(CFG.BEHOLD){fetch(CFG.BEHOLD).then(function(r){return r.json()}).then(function(j){var ps=(j.posts||j||[]).filter(function(p){return p&&(p.thumbnailUrl||p.mediaUrl||p.sizes)});var isR=function(p){return p.mediaType==='VIDEO'||/\/reel\//.test(p.permalink||'')};var rl=ps.filter(isR);if(rl.length)ps=rl;if(!ps.length)return;var sb=$('#insta .sub');if(sb)sb.textContent='Fresh from Instagram. Drag them around. Tap a reel to watch it there.';
-  draw(ps.map(function(p){var im=(p.sizes&&(p.sizes.medium||p.sizes.small||p.sizes.large)||{}).mediaUrl||p.thumbnailUrl||p.mediaUrl;var c=(p.prunedCaption||p.caption||'').replace(/\s+/g,' ').slice(0,38);return {href:p.permalink||IG,ext:1,reel:isR(p),img:im,alt:(p.caption||'Instagram post').slice(0,90).replace(/"/g,''),cap:c||'Instagram'}}));
-  var st=$('#pb .stamp');if(st)st.remove()}).catch(function(){})}
- var d=null,moved=false;
- pb.addEventListener('pointerdown',function(e){var p=e.target.closest('.pin');if(!p||innerWidth<900)return;var r=p.getBoundingClientRect(),pr=pb.getBoundingClientRect();d={p:p,dx:e.clientX-r.left,dy:e.clientY-r.top,x:e.clientX,y:e.clientY,pr:pr};moved=false;p.classList.add('drag');try{p.setPointerCapture(e.pointerId)}catch(x){}});
- addEventListener('pointermove',function(e){if(!d)return;if(Math.hypot(e.clientX-d.x,e.clientY-d.y)>5)moved=true;if(!moved)return;var pw=d.pr.width-d.p.offsetWidth,ph=d.pr.height-d.p.offsetHeight;d.p.style.left=Math.max(0,Math.min(pw,e.clientX-d.pr.left-d.dx))+'px';d.p.style.top=Math.max(0,Math.min(ph,e.clientY-d.pr.top-d.dy))+'px'});
- addEventListener('pointerup',function(){if(d){d.p.classList.remove('drag');d=null}});
- pb.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true)})();
+ if(CFG.BEHOLD){fetch(CFG.BEHOLD).then(function(r){return r.json()}).then(function(j){var ps=(j.posts||j||[]).filter(function(p){return p&&(p.thumbnailUrl||p.mediaUrl||p.sizes)});var isR=function(p){return p.mediaType==='VIDEO'||/\/reel\//.test(p.permalink||'')};var rl2=ps.filter(isR);if(rl2.length)ps=rl2;if(!ps.length)return;
+  draw(ps.map(function(p){var sz=p.sizes||{};var im=(sz.large||sz.medium||sz.small||{}).mediaUrl||p.thumbnailUrl||p.mediaUrl;var c=(p.prunedCaption||p.caption||'').replace(/\s+/g,' ').slice(0,44);var cp=p.colorPalette||{};var g=(cp.vibrant||cp.dominant||'').toString();if(!/^\d+,\d+,\d+$/.test(g))g='255,90,31';
+   return {href:p.permalink||IG,ext:1,img:im,vid:isR(p)&&p.mediaUrl&&/\.mp4|video/i.test(p.mediaUrl)?p.mediaUrl:'',g:g,alt:(p.caption||'Instagram reel').slice(0,90).replace(/"/g,''),cap:c||'Instagram'}}))}).catch(function(){})}
+ /* entrance */
+ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){rl.classList.add('in');io.disconnect()}})},{threshold:.25});io.observe(rl)}else rl.classList.add('in');
+ /* hover: tilt, glare, muted preview */
+ var cur=null;
+ function stop(c){var v=c.querySelector('video');if(v){v.pause();v.classList.remove('on')}c.style.removeProperty('--rx');c.style.removeProperty('--ry')}
+ pb.addEventListener('pointerover',function(e){var c=e.target.closest('.rc');if(!c||c===cur||e.pointerType==='touch')return;if(cur)stop(cur);cur=c;
+  var u=c.dataset.vid;if(!u)return;var v=c.querySelector('video');if(!v){v=document.createElement('video');v.muted=true;v.loop=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';v.className='rc-v';c.querySelector('.rc-in').insertBefore(v,c.querySelector('.rc-gl'));v.addEventListener('playing',function(){v.classList.add('on')});v.src=u}
+  var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})});
+ pb.addEventListener('pointerout',function(e){var c=e.target.closest('.rc');if(!c||c.contains(e.relatedTarget))return;stop(c);if(cur===c)cur=null});
+ pb.addEventListener('pointermove',function(e){var c=e.target.closest('.rc');if(!c||e.pointerType==='touch')return;var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--ry',((x-.5)*14).toFixed(1)+'deg');c.style.setProperty('--rx',((.5-y)*14).toFixed(1)+'deg');c.style.setProperty('--gx',(x*100).toFixed(0)+'%');c.style.setProperty('--gy',(y*100).toFixed(0)+'%')});
+})();
 
 /* ---------- theme ---------- */
 var over=null,pnBg='#e9e8e1',pnFg='#0e0e0c';
