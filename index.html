@@ -987,9 +987,13 @@ function journalOv(){
 function postOv(s){var p=POSTS.filter(function(x){return x.s===s})[0];if(!p)return;
  $('#postIn').innerHTML='<div class="post"><div class="byl mono"><span>By Heramb Arora</span><span>'+p.mins+' min read</span></div><h1 class="disp">'+p.t+'</h1>'+p.b.map(function(x){return '<p>'+x+'</p>'}).join('')+'<div class="sh" style="margin-top:34px"><button class="btn line" data-journal>&larr; All notes</button><button class="btn noclean" data-brief>Start a launch brief &rarr;</button></div></div>';
  show($('#postOv'),'#f3ead8','#1a1612')}
+function allOv(){var bs2=BR.slice();
+ $('#aisleIn').innerHTML='<div class="mono">Portfolio &middot; '+bs2.length+' case studies</div><h1 class="disp">Selected work</h1><p class="lead"><b>Packaging, brand identity and launch work for consumer brands.</b><br>Open any case study to see the full story.</p><div class="sh">'+shareBtns('all')+'</div><div class="grid">'+bs2.map(card).join('')+'</div><div class="oth"><span class="mono" style="padding:10px 0">By aisle</span>'+AIS.map(function(x){return '<button class="chip" data-aisle="'+x.s+'">'+x.n+'</button>'}).join('')+'</div>';
+ show($('#aisleOv'),'#e9e8e1','#0e0e0c')}
 function route(tok){tok=(tok||'').replace('#','');var c=false;if(tok.indexOf('share-')===0){c=true;tok=tok.slice(6)}
  if(c!==clean)setClean(c);
- if(tok.indexOf('aisle-')===0)aisleOv(tok.slice(6));
+ if(tok==='all'||(tok===''&&c))allOv();
+ else if(tok.indexOf('aisle-')===0)aisleOv(tok.slice(6));
  else if(tok.indexOf('case-')===0)caseOv(tok.slice(5));
  else if(tok.indexOf('post-')===0)postOv(tok.slice(5));
  else if(tok==='journal')journalOv();
