@@ -715,7 +715,7 @@ body.clean #insta{display:none!important}
 <div class="consent" id="consent" hidden role="dialog" aria-label="Cookie preferences"><p>We use cookies to measure visits and run ads. Nothing is set until you say yes.</p><div><button class="btn line sm" data-consent="no">Decline</button><button class="btn sm" data-consent="yes">Accept</button></div></div>
 <script>(function(){
 var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
-var CFG={GTM:'',BEHOLD:'https://feeds.behold.so/PBlDJtDAsQFBuqg2yPr1',LEADS:'https://script.google.com/macros/s/AKfycbwXJOZ56KvbqFlDb4MTgZWMKfpIMu4P8w8rjYfYptgTAyee1pT9sBXW8k32mBj0nZ4O/exec',BOOK:''};
+var CFG={GTM:'',GA:'G-5PMC83YWGJ',PIXEL:'',BEHOLD:'https://feeds.behold.so/PBlDJtDAsQFBuqg2yPr1',LEADS:'https://script.google.com/macros/s/AKfycbwXJOZ56KvbqFlDb4MTgZWMKfpIMu4P8w8rjYfYptgTAyee1pT9sBXW8k32mBj0nZ4O/exec',BOOK:''};
 var WA='18602647621',MAIL='hello@brandsinspire.com',PHONE='+1 (860) 264 7621';
 var IG='https://www.instagram.com/heramb.arora',LI='https://www.linkedin.com/in/herambarora/',BEH='https://www.behance.net/herambarora2';
 var AIS=[
@@ -792,9 +792,12 @@ var CS=null;try{CS=localStorage.getItem('bi-consent')}catch(e){}
 function consentState(v){var g=v?'granted':'denied';return {ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g}}
 var cd=consentState(CS==='yes');cd.wait_for_update=500;gtag('consent','default',cd);
 if(CFG.GTM&&/^GTM-[A-Z0-9]+$/.test(CFG.GTM)){dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtm.js?id='+CFG.GTM;document.head.appendChild(gs)}
-function bt(ev,o){try{var d={event:ev};for(var k in (o||{}))d[k]=o[k];dataLayer.push(d)}catch(e){}}
-(function(){var bar=document.getElementById('consent');if(!bar||CS||!(CFG.GTM&&/^GTM-[A-Z0-9]+$/.test(CFG.GTM)))return;bar.hidden=false;
- bar.addEventListener('click',function(e){var b=e.target.closest('[data-consent]');if(!b)return;var y=b.dataset.consent==='yes';try{localStorage.setItem('bi-consent',y?'yes':'no')}catch(x){}gtag('consent','update',consentState(y));if(y)bt('consent_granted');bar.hidden=true})})();
+if(CFG.GA&&/^G-[A-Z0-9]+$/.test(CFG.GA)){gtag('js',new Date());gtag('config',CFG.GA);var ga=document.createElement('script');ga.async=true;ga.src='https://www.googletagmanager.com/gtag/js?id='+CFG.GA;document.head.appendChild(ga)}
+var PXL=false;function loadPixel(){if(PXL||!/^[0-9]{8,20}$/.test(CFG.PIXEL||''))return;PXL=true;!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CFG.PIXEL);fbq('track','PageView')}
+if(CS==='yes')loadPixel();
+function bt(ev,o){try{var d={event:ev};for(var k in (o||{}))d[k]=o[k];dataLayer.push(d);if(CFG.GA&&!CFG.GTM)gtag('event',ev,o||{});if(ev==='generate_lead'&&window.fbq)fbq('track','Lead')}catch(e){}}
+(function(){var bar=document.getElementById('consent');if(!bar||CS||!((CFG.GTM&&/^GTM-[A-Z0-9]+$/.test(CFG.GTM))||CFG.GA||CFG.PIXEL))return;bar.hidden=false;
+ bar.addEventListener('click',function(e){var b=e.target.closest('[data-consent]');if(!b)return;var y=b.dataset.consent==='yes';try{localStorage.setItem('bi-consent',y?'yes':'no')}catch(x){}gtag('consent','update',consentState(y));if(y){loadPixel();bt('consent_granted')}bar.hidden=true})})();
 function bk(){$$('.bk').forEach(function(a){if(CFG.BOOK){a.href=CFG.BOOK;a.target='_blank';a.rel='noopener';a.hidden=false}else a.hidden=true})}
 function leadPayload(){return {id:B.ref,ts:new Date().toISOString(),aisle:B.aisle,stage:B.stage,markets:B.markets.join(', '),channels:B.channels.join(', '),scope:B.scope.join(', '),size:BUD[B.bud][0],launching:B.what,audience:B.who,when:B.when,name:B.name,email:B.email,phone:B.phone,page:location.href.split('#')[0],referrer:document.referrer||''}}
 function postLead(d,quick){var tries=0;function go(){tries++;var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){ctl&&ctl.abort()},20000);
